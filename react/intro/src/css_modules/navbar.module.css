@@ -1,0 +1,27 @@
+.nav {
+  width: 100%;
+  background: black;
+  padding: 8px 12px
+}
+.line {
+  text-decoration: underline dotted red;
+}
+.ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.li {
+  color: white;
+  /* composes vous permet mixer les propriétés communes à plusieurs classes */
+  /*Ne fonctionne pas avec les id */
+  composes: line;
+  /* Il est aussi possible d'utiliser "composes" venant d'autres fichiers */
+  /* composes: className from "./style.css"; */
+}
+
+#other_color {
+  /*Impossible d'utiliser la propriété"composes" ici  */
+  color: purple;
+}

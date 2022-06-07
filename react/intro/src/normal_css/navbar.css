@@ -1,0 +1,18 @@
+nav {
+  width: 100%;
+  background: black;
+  padding: 8px 12px
+}
+.ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.li {
+  color: white;
+}
+
+#other_color {
+  color: purple;
+}
