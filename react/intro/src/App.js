@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
 
-function App() {
+const arr = [
+  {
+    uid:1,
+    name: 'Yvens',
+    age: "14 ans",
+    taille: '1m43'
+  },
+  {
+    uid:2,
+    name: 'Yohan',
+    age: "18 ans",
+    taille: '1m30'
+  },
+  {
+    uid:3,
+    name: 'Cédric',
+    age: "19 ans",
+    taille: '1m22'
+  }
+]
+
+function NavBar (props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>About</li>
+        <li>Contact</li>
+      </ul>
+      {props.children}
+      <div>Séparation</div>
+    </nav>
+  )
 }
 
-export default App;
+function Presentation (props) {
+  return (
+    <div>
+      {props.name}
+      {props.age}
+      {props.taille}
+    </div>
+  )
+}
+
+function App () {
+  return (
+    <div className='App'>
+      {/* <NavBar/> */}
+      <NavBar>
+        {arr.map((person, idx) => (
+          <Presentation key={person.uid} age={<span>{person.age}</span>} taille={<div>{person.taille}</div>} />
+        ))}
+      </NavBar>
+    </div>
+  )
+}
+
+export default App
