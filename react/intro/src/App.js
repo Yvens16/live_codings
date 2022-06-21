@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { GiphyFetch } from '@giphy/js-fetch-api'
 import './App.css'
 //TODO: créer un fichier .env et ajouter votre clé gify comme ici: https://create-react-app.dev/docs/adding-custom-environment-variables
@@ -15,7 +15,11 @@ import './App.css'
  * API: (Ne pas utiliser, juste regarder) https://developers.giphy.com/docs/api/endpoint#search:  Ne contient que les endpoind(liens) des appel API
  *
  * https://waytolearnx.com/2018/11/difference-entre-api-et-sdk.html
+ * 
  */
+
+// fetch("https:api.com/gifs?number=4&type=sombre")
+
 const gf = new GiphyFetch(process.env.REACT_APP_GIFY_API_KEY)
 
 function GifList ({ gifList, selectGif }) {
@@ -38,6 +42,7 @@ function Gif ({selectedGifUrl}) {
   return (
     <div className='selectedGif'>
       {selectedGifUrl && <img src={selectedGifUrl} alt='gif' />}
+      {/* {selectedGifUrl ? <img src={selectedGifUrl} alt='gif' /> : null} */}
     </div>
   )
 }
@@ -47,15 +52,12 @@ function App () {
   const [search, setSearch] = useState('')
   const [gifList, setGifList] = useState(null)
 
-  const selectGif = async gif => {
-    setSelectedGif(gif)
+  const selectGif = async gifUrl => {
+    setSelectedGif(gifUrl)
   }
 
   const fetchGifs = async () => {
-    const { data: gifs } = await gf.search(search, {
-      sort: 'relevant',
-      limit: 10
-    })
+    const { data: gifs } = await gf.search(search, {sort: 'relevant',limit: 10})
     setGifList(gifs)
   }
 
@@ -67,6 +69,7 @@ function App () {
 
   return (
     <div className='App'>
+      {console.log(selectedGifUrl, search, gifList)}
       <input type='text' value={search} onChange={handleSearch} />
       <div className='flex_container'>
         <Gif selectedGifUrl={selectedGifUrl}/>
