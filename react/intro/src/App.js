@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Link } from 'react-router-dom'
 
-function App() {
+const categories = ['animaux', 'sport']
+export default function App () {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      {categories.map((category, idx) => (
+        <div key={idx}>
+          {/* key={invoice.number} */}
+          <Link to={`/categories/${category}`}>
+            <button type='button' className='btncats'>
+              {category}
+            </button>
+          </Link>{' '}
+          |{' '}
+        </div>
+      ))}
+      <Link to="/outlet">
+        <button type='button' className='btncats'>
+          outlet
+        </button>
+      </Link>{' '}
     </div>
-  );
+  )
 }
-
-export default App;
