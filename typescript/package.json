@@ -1,0 +1,14 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "Cours sur typescript",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Yvens Belaston",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.4"
+  }
+}
